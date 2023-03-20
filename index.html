@@ -4,7 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>LOTR Characters</title>
   </head>
-  <body></body>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+      {{ message }}
+      <p v-if="characters.length === 0">No Characters Listed!</p>
+      <ul v-else>
+        <li v-for="character in characters">
+          Name: {{ character.name }},
+          Race: {{ character.race }},
+          Weapon: {{ character.weapon }}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue
+      createApp({
+        data() {
+          return {
+            message: 'LOTR Character List',
+            characters: [
+              {name: 'Gandalf', race: 'Ainur', weapon: 'Glamdring'},
+              {name: 'Sauron', race: 'Ainur', weapon: 'the One ring'},
+              {name: 'Galadriel', race: 'Elves', weapon: 'Nenya'},
+              {name: 'Aragorn', race: 'Men', weapon: 'Anduril'},
+              {name: 'Frodo', race: 'Hobbit', weapon: 'Sting'},
+            ]
+          }
+        }
+      }).mount('#app')
+    </script>
+  </body>
 </html>
